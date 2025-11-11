@@ -1,0 +1,138 @@
+﻿@model IEnumerable<TutorManagementProject.Models.Student>
+
+@{
+    ViewBag.Title = "DisplayStudents";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students - Tutor Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #ffc107; /* Yellow */
+            color: #155724; /* Dark green */
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-form {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto; /* For responsive horizontal scrolling */
+        }
+
+        table th {
+            background-color: #0d6efd; /* Bootstrap primary */
+            color: white;
+        }
+
+        table td, table th {
+            vertical-align: middle;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+        }
+
+        .add-new {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+
+        <h2>All Students Details</h2>
+
+        <!-- Search Form -->
+        @using (Html.BeginForm("DisplayStudents", "Student", FormMethod.Get))
+        {
+            <div class="search-form d-flex flex-wrap align-items-center gap-3">
+                <b>Search By:</b>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButton("searchBy", "Name", true, new { @class = "form-check-input", id = "searchName" })
+                    <label class="form-check-label" for="searchName">Name</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButton("searchBy", "StudentId", false, new { @class = "form-check-input", id = "searchId" })
+                    <label class="form-check-label" for="searchId">StudentId</label>
+                </div>
+                <input type="text" name="search" class="form-control flex-grow-1" placeholder="Enter search value" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        }
+
+        <!-- Table -->
+        <div class="table-container mt-3">
+            <table class="table table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(S => S.FirstName)</th>
+                        <th>@Html.DisplayNameFor(S => S.LastName)</th>
+                        <th>@Html.DisplayNameFor(S => S.EmailId)</th>
+                        <th>@Html.DisplayNameFor(S => S.PhoneNo)</th>
+                        <th>@Html.DisplayNameFor(S => S.DOB)</th>
+                        <th>@Html.DisplayNameFor(S => S.RegistrationDate)</th>
+                        <th>@Html.DisplayNameFor(S => S.Active)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center text-danger">No records found!</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var std in Model)
+                        {
+                <tr>
+                    <td>@Html.DisplayFor(m => std.FirstName)</td>
+                    <td>@Html.DisplayFor(m => std.LastName)</td>
+                    <td>@Html.DisplayFor(m => std.EmailId)</td>
+                    <td>@Html.DisplayFor(m => std.PhoneNo)</td>
+                    <td>@Html.DisplayFor(S => std.DOB, new { @type = "date" })</td>
+                    <td>@Html.DisplayFor(S => std.RegistrationDate, new { @type = "date" })</td>
+                    <td>@Html.DisplayFor(m => std.Active)</td>
+                    <td class="action-links">
+                        @Html.ActionLink("Edit", "EditStudent", new { StudentId = std.StudentId }, new { @class = "btn btn-sm btn-warning" })
+                        @Html.ActionLink("Delete", "DeleteStudent", new { StudentId = std.StudentId }, new { @class = "btn btn-sm btn-danger" })
+                        @Html.ActionLink("View", "DisplayStudent", new { StudentId = std.StudentId }, new { @class = "btn btn-sm btn-info text-white" })
+                    </td>
+                </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="add-new">
+            @Html.ActionLink("Add New Student Record", "AddStudent", null, new { @class = "btn btn-success" })
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

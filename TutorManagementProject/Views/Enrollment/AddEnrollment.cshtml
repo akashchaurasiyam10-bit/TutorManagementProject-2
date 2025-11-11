@@ -1,0 +1,38 @@
+﻿@model TutorManagementProject.Models.Enrollment
+@{
+    ViewBag.Title = "AddEnrollment";
+}
+
+<h2 style="color:blue; background-color:yellowgreen; text-align:center">-- Add Enrollment Details Records -- </h2>
+
+<br />
+@using (Html.BeginForm("AddEnrollment", "Enrollment"))
+{
+<div style="display:flex; gap:100px; background-color:aqua;color:brown; ">
+    <div style="flex:1; padding-left:20px; margin:20px">
+        @Html.HiddenFor(T => T.EnrollmentId)
+
+        @Html.LabelFor(T => T.EnrollmentDate)<br />
+        @Html.TextBoxFor(T => T.EnrollmentDate, new { @type = "date", style = "width:200px" })
+        <br /><br />
+        @Html.LabelFor(T => T.Status) <br />
+        @Html.TextBoxFor(T => T.Status)
+    </div>
+    <div style="margin:20px; padding-right:100px;">
+        @Html.LabelFor(T => T.Student.StudentName)<br />
+        @Html.DropDownList("StudentId", null, "-- Select-- ")
+        <br /><br />
+        @Html.LabelFor(T => T.Batch.BatchName)<br />
+        @Html.DropDownList("BatchId", null, "-- Select --")
+        <br /><br />
+    </div>
+        <br />
+    </div>
+    <br />
+    <div style="text-align:center">
+        <input type="submit" value="Save" class="btn btn-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="btn btn-danger" />
+        <br /><br />
+        @Html.ActionLink("Back to EnrollmentDetails", "EnrollmentDetails")
+    </div>
+ }

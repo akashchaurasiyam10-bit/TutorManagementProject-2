@@ -1,0 +1,77 @@
+﻿@model TutorManagementProject.Models.Batch
+@{
+    ViewBag.Title = "EditBatch";
+}
+
+<h2 style="text-align:center; background-color:yellow;color:red"> Edit and Update Batch Details </h2>
+
+<br />
+@using (Html.BeginForm("UpdateBatch", "Batch"))
+{
+    <div style="background-color:aqua;color:brown; font-weight:bold; display:flex">
+        <div style="flex:1; padding-left:50px;margin-bottom:50px">
+            @Html.HiddenFor(B => B.BatchId)
+            <br />
+            @Html.LabelFor(B => B.BatchName)<br />
+            @Html.TextBoxFor(B => B.BatchName)
+            <br /><br />
+            @Html.LabelFor(B => B.BatchFee)<br />
+            @Html.TextBoxFor(B => B.BatchFee)
+            <br /><br />
+            @Html.LabelFor(B => B.Student.StudentName)<br />
+            @Html.DropDownList("StudentId", null, "-- Select Name --")
+            <br /><br />
+            @Html.LabelFor(B => B.Tutor.TutorName)<br />
+            @Html.DropDownList("TutorId", null , "-- Select Name --")
+        </div>
+        <div style=" margin-top:10px; padding-right:230px">
+            <br />
+            @Html.LabelFor(B => B.Timing)<br />
+            @Html.TextBoxFor(B => B.Timing, new { @type = "time", @class = "form-control" })
+            <br /><br />
+            @Html.LabelFor(B => B.StartDate)<br />
+            @Html.TextBoxFor(B => B.StartDate, "{0:yyyy-MM-dd}", new { @type = "date", style = "width:180px" })
+            <br /><br />
+            @Html.LabelFor(B => B.EndDate)<br />
+            @Html.TextBoxFor(B => B.EndDate, "{0:yyyy-MM-dd}", new { @type = "date", style = "width:180px" })
+            <br /><br />
+            @Html.LabelFor(B => B.Mode)<br />
+            @Html.TextBoxFor(B => B.Mode)
+             <br /><br />
+            @Html.LabelFor(B => B.Active) <br />
+            @Html.CheckBoxFor(B => B.Active)
+        </div>
+    </div>
+    <br />
+
+    <div style="text-align:center">
+        <input type="submit" value="Update" name="btmUpdate" class="btn btn-outline-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <label style="font-size:20px">@Html.ActionLink("Cancel", "BatchDetails")</label>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h4 style="text-align:center">
+    @Html.ActionLink("Go to Batch Page", "BatchDetails")
+</h4>*@

@@ -1,0 +1,47 @@
+﻿@model TutorManagementProject.Models.Student
+@{
+    ViewBag.Title = "DisplayStudent";
+}
+
+<h2 style="background-color:yellowgreen;color:red;text-align:center">Display Single Student Details at Page </h2>
+<br />
+
+@*<span>Hi -  @ViewBag.Roles</span>*@
+<table border="1" style="border-color:blue; border-width:thin" class="table">
+    <tr>
+        <td style="color:red; font-size:larger"> First Name :</td>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> Last Name :</td>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> Emial Id :</td>
+        <td>@Model.EmailId</td>
+    </tr>
+    <tr>
+        <td  style="color:red; font-size:16px">Phone No  :</td>
+        <td>@Html.DisplayFor(S => S.PhoneNo)</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Date Of Birth :</td>
+        <td>@Model.DOB</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">RegistrationDate :</td>
+        <td>@Model.RegistrationDate</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Active :</td>
+        <td>@Model.Active</td>
+    </tr>
+    <tr>
+        <td align="center" colspan="9">
+            @Html.ActionLink("Back to Students Details", "DisplayStudents")
+        </td>
+    </tr>
+</table>
+
+
+@*<h5 style="text-align:center">@Html.ActionLink("Back to Student Details", "DisplayStudents")</h5>*@

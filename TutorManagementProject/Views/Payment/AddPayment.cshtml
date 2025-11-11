@@ -1,0 +1,45 @@
+﻿@model TutorManagementProject.Models.Payment
+@{
+    ViewBag.Title = "AddPayment";
+}
+
+<h2 style="text-align:center; color:firebrick; background-color:yellowgreen">Create Page  Add Payment Details Show </h2>
+
+<br />
+@using (Html.BeginForm("AddPayment", "Payment"))
+{
+    <div style="display:flex; gap:100px; background-color:aqua;color:brown; ">
+        <div style="flex:1; padding-left:20px; margin:20px">
+            @Html.LabelFor(T => T.Batch.BatchName)<br />
+            @Html.DropDownList("BatchId", null, "-- Select --")
+            <br /><br />
+            @Html.LabelFor(T => T.Student.StudentName)<br />
+            @Html.DropDownList("StudentId", null, "-- Select --")
+            <br /><br />
+            @Html.LabelFor(T => T.TotalAmaount)<br />
+            @Html.DropDownList("PaymentId", null, "-- Select --")
+            <br /><br />
+            @Html.LabelFor(T => T.PaidFee)<br />
+            @Html.TextBoxFor(T => T.PaidFee)
+        </div>
+        <br />
+        <div style="margin:20px; padding-right:100px;">
+            @Html.LabelFor(T => T.DueFee)<br />
+            @Html.TextBoxFor(T => T.DueFee)
+            <br /><br />
+            @Html.LabelFor(T => T.PaymentMode)<br />
+            @Html.TextBoxFor(T => T.PaymentMode)
+            <br /><br />
+            @Html.LabelFor(T => T.TransactionId)<br />
+            @Html.TextBoxFor(T => T.TransactionId)
+            <br /><br />
+            @Html.LabelFor(T => T.Date)<br />
+            @Html.TextBoxFor(T => T.Date, new { @type = "date", style = "width: 200px" })
+        </div>
+    </div>
+    <br />
+    <div style="text-align:center">
+        <input type="submit" value="Save" class="btn btn-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="btn btn-danger" />
+    </div>
+}

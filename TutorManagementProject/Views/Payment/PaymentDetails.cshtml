@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TutorManagementProject.Models.Payment>
+@{
+    ViewBag.Title = "PaymentDetails";
+}
+
+<h2 style="text-align:center; color:blue; background-color:black;"> -- Payment Details -- </h2>
+
+<br />
+
+<table border="1" style="border-color:red; border-width:thin" class="table">
+    <tr style="background-color:aqua; color:blue">
+        <th>@Html.DisplayNameFor(T => T.PaymentId)</th>
+        <th>@Html.DisplayNameFor(T => T.StudentId)</th>
+        <th>@Html.DisplayNameFor(T => T.BatchId)</th>
+        <th>@Html.DisplayNameFor(T => T.TotalAmaount)</th>
+        <th>@Html.DisplayNameFor(T => T.PaidFee)</th>
+        <th>@Html.DisplayNameFor(T => T.DueFee)</th>
+        <th>@Html.DisplayNameFor(T => T.PaymentMode)</th>
+        <th>@Html.DisplayNameFor(T => T.TransactionId)</th>
+        <th>@Html.DisplayNameFor(T => T.Date)</th>
+        <th>-- Action --</th>
+    </tr>
+    @foreach (var tu in Model)
+    {
+        <tr style="background-color:antiquewhite">
+            <td>@Html.DisplayFor(T => tu.PaymentId)</td>
+            <td>@Html.DisplayFor(T => tu.StudentId)</td>
+            <td>@Html.DisplayFor(T => tu.BatchId) </td>
+            <td>@Html.DisplayFor(T => tu.TotalAmaount)</td>
+            <td>@Html.DisplayFor(T => tu.PaidFee) </td>
+            <td>@Html.DisplayFor(T => tu.DueFee)</td>
+            <td>@Html.DisplayFor(T => tu.PaymentMode) </td>
+            <td>@Html.DisplayFor(T => tu.TransactionId)</td>
+            <td>@Html.DisplayFor(T => tu.Date) </td>
+            <td>
+                @Html.ActionLink("View", "PaymentDetail", new { PaymentId = tu.PaymentId })
+                @Html.ActionLink("Edit", "EditPayment", new { PaymentId = tu.PaymentId })
+                @Html.ActionLink("Delete", "DeletePayment", new { PaymentId = tu.PaymentId })
+            </td>
+        </tr>
+    }
+
+    <tr style="background-color:aliceblue">
+        <td align="center" colspan="11">@Html.ActionLink("Add New Payment Record", "AddPayment")</td>
+    </tr>
+
+</table>
+

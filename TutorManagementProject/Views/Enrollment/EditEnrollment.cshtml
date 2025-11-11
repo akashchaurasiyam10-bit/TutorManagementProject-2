@@ -1,0 +1,36 @@
+﻿@model TutorManagementProject.Models.Enrollment
+@{
+    ViewBag.Title = "EditEnrollment";
+}
+
+<h2 style="text-align:center; color: yellow; background-color:black">-- Create to Page Edit Enrollment and Update Enrollment Details Records -- </h2>
+
+<br />
+@using (Html.BeginForm("UpdateEnrollment", "Enrollment"))
+{
+    <div style="display:flex; gap:100px; background-color:aqua;color:brown; ">
+        <div style="flex:1; padding-left:20px; margin:20px">
+            @Html.HiddenFor(T => T.EnrollmentId)
+
+            @Html.LabelFor(T => T.EnrollmentDate)<br />
+            @Html.TextBoxFor(T => T.EnrollmentDate, "{0:yyyy-MM-dd}", new { @type = "date", style = "width:180px" })
+            <br /><br />
+            @Html.LabelFor(T => T.Status) <br />
+            @Html.TextBoxFor(T => T.Status)
+        </div>
+        <div style="margin:20px; padding-right:100px;">
+            @Html.LabelFor(T => T.Student.StudentName)<br />
+            @Html.DropDownList("StudentId")
+            <br /><br />
+            @Html.LabelFor(T => T.Batch.BatchName)<br />
+            @Html.DropDownList("BatchId")
+            <br /><br />
+        </div>
+        <br />
+    </div>
+    <br />
+    <div style="text-align:center">
+        <input type="submit" value="Update" class="btn btn-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <lable style="font-size:larger">@Html.ActionLink("Cancel", "EnrollmentDetails")</lable>
+    </div>
+}

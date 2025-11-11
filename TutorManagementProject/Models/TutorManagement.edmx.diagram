@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7492b6e2edb47b7b33c483dc7b97dff" Name="Diagram1">
+        <EntityTypeShape EntityType="TutorManagmentModel.Batch" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorManagmentModel.Enrollment" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorManagmentModel.Payment" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorManagmentModel.Student" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorManagmentModel.Subject" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TutorManagmentModel.Tutor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TutorManagmentModel.FK__Batch__StudentId__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="TutorManagmentModel.FK__Batch__TutorId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TutorManagmentModel.FK__Enrollmen__Batch__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="TutorManagmentModel.FK__Payment__BatchId__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="TutorManagmentModel.FK__Enrollmen__Stude__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="TutorManagmentModel.FK__Payment__Student__5812160E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TutorManagmentModel.Role" Width="1.5" PointX="12.125" PointY="5.125" />
+        <EntityTypeShape EntityType="TutorManagmentModel.UserRoleMapping" Width="1.5" PointX="10.125" PointY="6.125" />
+        <EntityTypeShape EntityType="TutorManagmentModel.User" Width="1.5" PointX="12.25" PointY="7.25" />
+        <AssociationConnector Association="TutorManagmentModel.FK__UserRoleM__RoleI__339FAB6E" />
+        <AssociationConnector Association="TutorManagmentModel.FK__UserRoleM__UserI__3493CFA7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,110 @@
+﻿@model TutorManagementProject.Models.Student
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student - Tutor Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            background-color: #d1ecf1; /* light aqua */
+            padding: 30px 40px;
+            border-radius: 12px;
+            border: 2px solid #0dcaf0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+            .form-container h2 {
+                text-align: center;
+                color: red;
+                margin-bottom: 25px;
+            }
+
+        .btn-custom {
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Add Student Details</h2>
+
+        @using (Html.BeginForm("AddStudent", "Student"))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        @Html.LabelFor(S => S.FirstName, htmlAttributes: new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(S => S.FirstName, new { @class = "form-control", placeholder = "Enter First Name" })
+                        @Html.ValidationMessageFor(S => S.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(S => S.LastName, htmlAttributes: new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(S => S.LastName, new { @class = "form-control", placeholder = "Enter Last Name" })
+                        @Html.ValidationMessageFor(S => S.LastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(S => S.EmailId, htmlAttributes: new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(S => S.EmailId, new { @class = "form-control", placeholder = "Enter Email" })
+                        @Html.ValidationMessageFor(S => S.EmailId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        @Html.LabelFor(S => S.PhoneNo, htmlAttributes: new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(S => S.PhoneNo, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                        @Html.ValidationMessageFor(S => S.PhoneNo, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(S => S.DOB, htmlAttributes: new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(S => S.DOB, new { @type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(S => S.DOB, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(S => S.RegistrationDate, htmlAttributes: new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(S => S.RegistrationDate, new { @type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(S => S.RegistrationDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-check mt-4">
+                        @Html.CheckBoxFor(S => S.Active, new { @class = "form-check-input", id = "ActiveCheck" })
+                        @Html.LabelFor(S => S.Active, htmlAttributes: new { @class = "form-check-label fw-bold", @for = "ActiveCheck" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4 gap-3">
+                <input type="submit" value="Save" name="btnSave" class="btn btn-success btn-custom" />
+                <input type="reset" value="Reset" name="btnReset" class="btn btn-danger btn-custom" />
+            </div>
+
+            <div class="text-center mt-3">
+                @Html.ActionLink("Go to Students Detail", "DisplayStudents", null, new { @class = "btn btn-link" })
+            </div>
+        }
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

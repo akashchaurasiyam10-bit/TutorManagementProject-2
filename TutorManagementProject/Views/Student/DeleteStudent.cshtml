@@ -1,0 +1,64 @@
+﻿@model TutorManagementProject.Models.Student
+@{
+    ViewBag.Title = "DeleteStudent";
+}
+
+<h2 style="color:red; background-color:yellow; text-align:center">Delete Student Details</h2>
+
+@using (Html.BeginForm("DeleteStudent", "Student"))
+{
+    @*<div style="background-color:turquoise;color:yellow">*@
+    <br />
+    <table border="1" align="center" style="color:blue; background-color:antiquewhite;">
+        <tr>
+            <td>@Html.HiddenFor(S => S.StudentId, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:larger">First Name :</td>
+            <td>@Html.TextBoxFor(S => S.FirstName, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:16px">Last Name :</td>
+            <td>@Html.TextBoxFor(S => S.LastName, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:16px">Email Id :</td>
+            <td>@Html.TextBoxFor(S => S.EmailId, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:16px">Phone NO :</td>
+            <td>@Html.TextBoxFor(S => S.PhoneNo, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:16px">Date Of Birth :</td>
+            <td>@Html.TextBoxFor(S => S.DOB, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:16px">Registration Id :</td>
+            <td>@Html.TextBoxFor(S => S.RegistrationDate, new { @readonly = "true" })</td>
+        </tr>
+        <tr>
+            <td style="color:blueviolet; font-size:16px">Active :</td>
+            <td>@Html.CheckBoxFor(S => S.Active)</td>
+        </tr>
+
+        <tr>
+    </table>
+   @*</div>*@
+    <br />
+    <div style="text-align:center">
+        <font style="font-size:23px;color:red;">Are you sure of Deleting the current record.??</font>
+        <br />
+        <input type="submit" value="Yes" style="font-size:20px; width:100px; background-color:gold; margin-top:20px" /> &nbsp;&nbsp;&nbsp;&nbsp;
+
+       <label style="font-size:26px">@Html.ActionLink("No", "DisplayStudents")</label> 
+    </div>
+}
+
+
+
+
+
+
+
+@*@Html.ActionLink("Go to Students Details", "DisplayStudents")*@

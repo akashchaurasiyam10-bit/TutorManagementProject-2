@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TutorManagementProject.Models.Batch>
+@{
+    ViewBag.Title = "BatchDetails";
+}
+
+<h2 style="color:red;background-color:yellow; text-align:center">All Batch Details Page </h2>
+<br />
+<table border="1" style="border-color:red; border-width:thin" class="table">
+    <tr style="background-color:aqua; color:blue">
+        <th>@Html.DisplayNameFor(B => B.BatchId)</th>
+        <th>@Html.DisplayNameFor(B => B.BatchName)</th>
+        <th>@Html.DisplayNameFor(B => B.BatchFee)</th>
+        <th>@Html.DisplayNameFor(B => B.Student.StudentId)</th>
+        <th>@Html.DisplayNameFor(B => B.TutorId)</th>
+        <th>@Html.DisplayNameFor(B => B.Timing)</th>
+        <th>@Html.DisplayNameFor(B => B.StartDate)</th>
+        <th>@Html.DisplayNameFor(B => B.EndDate)</th>
+        <th>@Html.DisplayNameFor(B => B.Mode)</th>
+        <th>@Html.DisplayNameFor(B => B.Active)</th>
+        <th>-- Action</th>
+    </tr>
+    @foreach (var bat in Model)
+    {
+        <tr style="background-color:antiquewhite;">
+            <td>@Html.DisplayFor(B => bat.BatchId)</td>
+            <td>@Html.DisplayFor(B => bat.BatchName)</td>
+            <td>@Html.DisplayFor(B => bat.BatchFee)</td>
+            <td>@Html.DisplayFor(B => bat.Student.StudentId)</td>
+            <td>@Html.DisplayFor(B => bat.Tutor.TutorId)</td>
+            <td>@Html.DisplayFor(B => bat.Timing)</td>
+            <td>@Html.DisplayFor(B => bat.StartDate)</td>
+            <td>@Html.DisplayFor(B => bat.EndDate)</td>
+            <td>@Html.DisplayFor(B => bat.Mode)</td>
+            <td>@Html.DisplayFor(B => bat.Active)</td>
+
+
+            <td>
+                @Html.ActionLink("View", "BatchDetail", new { BatchId = bat.BatchId })
+                @Html.ActionLink("Edit", "EditBatch", new { BatchId = bat.BatchId })
+                @Html.ActionLink("Delete", "DeleteBatch", new { BatchId = bat.BatchId })
+            </td>
+
+        </tr>
+
+    }
+    <tr style="background-color:gray">
+        <td align="center" colspan="11">@Html.ActionLink("Add to Batch Details", "AddBatch")</td>
+    </tr>
+</table>
+       

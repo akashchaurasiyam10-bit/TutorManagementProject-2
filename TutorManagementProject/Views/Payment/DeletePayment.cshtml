@@ -1,0 +1,55 @@
+﻿@model TutorManagementProject.Models.Payment
+@{
+    ViewBag.Title = "DeletePayment";
+}
+
+<h2 style="color:red; background-color:yellowgreen; text-align:Center"> Create Page to Delete Payment Records One OR All Records</h2>
+
+<br />
+@using (Html.BeginForm("DeletePayment", "Payment"))
+{
+    <table border="1" style="border-color:blue; border-width:thin" class="table">
+        <tr>
+            <td>@Html.HiddenFor(P => P.PaymentId)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:larger"> Student Id :</td>
+            <td>@Html.TextBoxFor(P => P.StudentId)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px"> Batch Id :</td>
+            <td>@Html.TextBoxFor(P => P.BatchId)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px"> TotalAmount :</td>
+            <td>@Html.TextBoxFor(P => P.Batch.BatchFee)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px">Paid Fee  :</td>
+            <td>@Html.TextBoxFor(P => P.PaidFee)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px">Due Fee :</td>
+            <td>@Html.TextBoxFor(P => P.DueFee)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px">PaymentMode :</td>
+            <td>@Html.TextBoxFor(P => P.PaymentMode)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px">TransactionId :</td>
+            <td>@Html.TextBoxFor(P => P.TransactionId)</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:16px">Date :</td>
+            <td>@Html.TextBoxFor(P => P.Date)</td>
+        </tr>
+    </table>
+    <br />
+    <div style="text-align:center">
+        <p style="color:red;">Are you sure of Deleting the current record.??</p>
+        <br />
+        <input type="submit" value="Yes" class="btn btn-outline-danger" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>@Html.ActionLink("NO", "PaymentDetails")</label>
+    </div>
+}

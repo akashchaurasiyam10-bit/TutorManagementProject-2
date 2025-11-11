@@ -1,0 +1,54 @@
+﻿@model TutorManagementProject.Models.Tutor
+@*@model IEnumerable<TutorManagementProject.Models.Tutor>*@
+
+@{
+    ViewBag.Title = "TutorDetail";
+}
+
+<h2 style="text-align:center; color:blue; background-color:antiquewhite"> Tutor Detail Records </h2>
+
+<br />
+
+<table border="1" style="border-color:blue; border-width:thin" class="table">
+    @*<tr>
+        <td style="color:red; font-size:16px">Tutor Id :</td>
+        <td>@Model.TutorId</td>
+    </tr>*@
+    <tr>
+        <td style="color:red; font-size:larger"> First Name :</td>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> Last Name :</td>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> Emial Id :</td>
+        <td>@Model.EmailId</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Phone No  :</td>
+        <td>@Html.DisplayFor(S => S.PhoneNo)</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">ExpertSubject :</td>
+        <td>@Model.ExpertSubject</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Exprience :</td>
+        <td>@Model.Exprience</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Qualification :</td>
+        <td>@Model.Qualification</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Status :</td>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <td align="center" colspan="9">
+            @Html.ActionLink("Back to Tutor Details", "TutorDetails")
+        </td>
+    </tr>
+</table>

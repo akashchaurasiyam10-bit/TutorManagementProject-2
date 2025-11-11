@@ -1,0 +1,96 @@
+﻿@model TutorManagementProject.Models.User
+
+@{
+    Layout = null; // Standalone page
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Tutor Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f2f2f2;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-form {
+            background-color: #d1ecf1; /* light aqua */
+            border: 2px solid #0dcaf0; /* Bootstrap info color */
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+            .signup-form h2 {
+                text-align: center;
+                color: red;
+                margin-bottom: 20px;
+            }
+
+        .form-control {
+            border-radius: 6px;
+        }
+
+        .btn-custom {
+            border-radius: 6px;
+        }
+
+        .login-link {
+            font-size: larger;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-form">
+        <h2>User Signup Page</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger mb-2" })
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "form-label fw-bold" })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your UserName" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label fw-bold" })
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "form-label fw-bold" })
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm your password" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <input type="submit" value="Signup" class="btn btn-outline-success btn-custom" />
+                <span class="login-link">
+                    @Html.ActionLink("Click to Login", "Login")
+                </span>
+            </div>
+        }
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

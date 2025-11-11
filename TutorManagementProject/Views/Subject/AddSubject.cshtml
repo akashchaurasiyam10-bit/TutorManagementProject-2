@@ -1,0 +1,35 @@
+﻿@model TutorManagementProject.Models.Subject
+@{
+    ViewBag.Title = "AddSubject";
+}
+
+<h2 style="color:red; background-color:yellow; text-align:center;">Add New Subject Deatials </h2>
+
+<br />
+@using (Html.BeginForm("AddSubject", "Subject"))
+{
+    <div style="background-color:aqua;color:brown; ">
+        <div style=" padding-left:20px; margin:20px">
+            @Html.HiddenFor(T => T.SubjectId)<br />
+
+            <br /><br />
+            @Html.LabelFor(T => T.SubjectName)<br />
+            @Html.TextBoxFor(T => T.SubjectName)
+            <br /><br />
+            @Html.LabelFor(T => T.Description)<br />
+            @Html.TextAreaFor(T => T.Description)
+            <br /><br />
+            @Html.LabelFor(T => T.Active)<br />
+            @Html.CheckBoxFor(T => T.Active)
+        </div>
+        <br />
+    </div>
+    <br />
+    <div style="text-align:center">
+        <input type="submit" value="Save" class="btn btn-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="btn btn-danger" />
+        <br /><br />
+        @Html.ActionLink("Back to Subject Details", "SubjectDetails")
+    </div>
+}
+

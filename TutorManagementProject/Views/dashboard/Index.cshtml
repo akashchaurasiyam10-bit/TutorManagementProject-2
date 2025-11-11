@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="container-fluid mt-3">
+<h3 class="fw-bold text-primary mb-4">Student Dashboard</h3>
+
+<!-- Summary Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 text-center bg-success text-white p-3 rounded-3">
+            <h5>Total Students</h5>
+            <h2>@ViewBag.TotalStudents</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 text-center bg-danger text-white p-3 rounded-3">
+            <h5>Total Tutors</h5>
+            <h2>@ViewBag.TotalTutors</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 text-center bg-primary text-white p-3 rounded-3">
+            <h5>Total Courses</h5>
+            <h2>@ViewBag.TotalCourses</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 text-center bg-warning text-dark p-3 rounded-3">
+            <h5>Total Fees Collected</h5>
+            <h2>₹@ViewBag.TotalFees</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Attendance Table -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-light fw-bold">Display of Attendance</div>
+    <div class="card-body">
+        <table class="table table-bordered text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>Semester</th>
+                    <th>Sub-I</th>
+                    <th>Attend-I</th>
+                    <th>Sub-II</th>
+                    <th>Attend-II</th>
+                    <th>Sub-III</th>
+                    <th>Attend-III</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>V</td>
+                    <td>Maths</td>
+                    <td>85%</td>
+                    <td>Science</td>
+                    <td>90%</td>
+                    <td>English</td>
+                    <td>88%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Notice Board and Transactions -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-info text-white fw-bold">Notice Board</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead><tr><th>Date</th><th>Notice</th></tr></thead>
+                    <tbody>
+                        @foreach (var n in ViewBag.Notices)
+                        {
+                            @*<tr>
+                    <td>@n.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@n.Notice</td>
+                </tr>*@
+                            <tr>
+                        <td>@n.Item1.ToString("dd/MM/yyyy")</td>
+                        <td>@n.Item2</td>
+                                </tr>
+                    }
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-warning fw-bold">Last Five Transactions</div>
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead><tr><th>Date</th><th>Receipt No.</th><th>Amount</th></tr></thead>
+                    <tbody>
+                         @foreach (var t in ViewBag.Transactions)
+                        {
+                            <tr>
+                                <td>@t.Item1.ToString("dd/MM/yyyy")</td>
+                                <td>@t.Item2</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

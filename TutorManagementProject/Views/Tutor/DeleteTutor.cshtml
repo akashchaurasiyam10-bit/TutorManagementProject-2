@@ -1,0 +1,59 @@
+﻿@model TutorManagementProject.Models.Tutor
+@{
+    ViewBag.Title = "DeleteTutor";
+}
+
+<h2 style="text-align:center; color:yellow; background-color:black">Create to the Logic in this page - Delete - Tutor Details</h2>
+
+<br />
+
+@using (Html.BeginForm("DeleteTutor", "Tutor"))
+{
+    <table>
+        <tr>
+            <td>@Html.HiddenFor(B => B.TutorId, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> First Name :</td>
+            <td>@Html.TextBoxFor(B => B.FirstName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Last Name :</td>
+            <td>@Html.TextBoxFor(B => B.LastName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> ExpertSubject :</td>
+            <td>@Html.TextBoxFor(B => B.ExpertSubject, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Exprience :</td>
+            <td>@Html.TextBoxFor(B => B.Exprience, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Qualification :</td>
+            <td>@Html.TextBoxFor(B => B.Qualification, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Email Id :</td>
+            <td>@Html.TextBoxFor(B => B.EmailId, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Phone No :</td>
+            <td>@Html.TextBoxFor(B => B.PhoneNo, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Status :</td>
+            <td>@Html.TextBoxFor(B => B.Status)</td>
+        </tr>
+    </table>
+    <br />
+
+    <div style="text-align:center">
+        <p style="color:red;">Are you sure of Deleting the current record.??</p>
+        <br />
+        <input type="submit" value="Yes" class="btn btn-outline-danger" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>@Html.ActionLink("NO", "TutorDetails")</label>
+    </div>
+}
+
+

@@ -1,0 +1,58 @@
+﻿@model TutorManagementProject.Models.Payment
+@{
+    ViewBag.Title = "PaymentDetail";
+}
+
+<h2 style="text-align:center; color:red; background-color:yellow">Create to Page Show Single Payment Detail Single Student</h2>
+
+<br />
+
+<table border="1" style="border-color:blue; border-width:thin" class="table">
+    <tr>
+        <td style="color:red; font-size:16px">Payment Id :</td>
+        <td>@Model.PaymentId</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:larger"> Student Id - Name :</td>
+        <td>@Model.Student.StudentName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> BatchID - Name :</td>
+        <td>@Model.Batch.BatchName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> TotalAmount (Orignal) :</td>
+        <td>@Model.Batch.BatchFee</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Paid Fee  :</td>
+        <td>@Html.DisplayFor(S => S.PaidFee)</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Due Fee :</td>
+        <td>@Model.DueFee</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Payment MOde :</td>
+        <td>@Model.PaymentMode</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Transaction Id :</td>
+        <td>@Model.TransactionId</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px">Date :</td>
+        <td>@Model.Date</td>
+    </tr>
+    <tr>
+        <td align="center" colspan="9">
+            @Html.ActionLink("Back to Payment Details", "PaymentDetails")
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Tutor Management System</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            position: fixed;
+            top: 56px; /* navbar height */
+            left: 0;
+            width: 240px;
+            height: calc(100vh - 56px);
+            background-color: #0d6efd;
+            color: white;
+            padding-top: 20px;
+            overflow-y: auto;
+            transition: all 0.3s;
+        }
+
+            .sidebar h4 {
+                text-align: center;
+                margin-bottom: 30px;
+                font-weight: bold;
+            }
+
+            .sidebar a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+                .sidebar a:hover,
+                .sidebar a.active {
+                    background-color: #084298;
+                    border-radius: 5px;
+                }
+
+            /* --- Collapsed sidebar --- */
+            .sidebar.collapsed {
+                width: 60px;
+            }
+
+                .sidebar.collapsed a span {
+                    display: none; /* hide text when collapsed */
+                }
+
+                .sidebar.collapsed h4 {
+                    display: none;
+                }
+
+        /* --- Main content --- */
+        .main-content {
+            margin-left: 240px;
+            margin-top: 56px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+            .main-content.collapsed {
+                margin-left: 60px;
+            }
+
+        /* --- Toggle button --- */
+        .sidebar-toggle {
+            position: fixed;
+            top: 60px;
+            left: 250px;
+            z-index: 1100;
+            background-color: #0d6efd;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sidebar.collapsed ~ .sidebar-toggle {
+            left: 70px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Top Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Dashboard")">
+                <i class="bi bi-mortarboard-fill"></i> TutorMS
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Help", "Help", "Home", null, new { @class = "nav-link" })</li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item d-flex align-items-center text-info me-3">
+                            <i class="fa fa-user-circle me-2"></i> @User.Identity.Name
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Logout", "Account")" class="nav-link">
+                                <i class="bi bi-box-arrow-right"></i> Logout
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a href="@Url.Action("Login", "Account")" class="nav-link">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ Sidebar -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="sidebar" class="sidebar">
+            <h4>TutorMS</h4>
+            <a href="@Url.Action("Index", "Dashboard")"><i class="bi bi-speedometer2"></i> <span>Dashboard</span></a>
+            <a href="@Url.Action("DisplayStudents", "Student")"><i class="bi bi-person-lines-fill"></i> <span>Students</span></a>
+            <a href="@Url.Action("TutorDetails", "Tutor")"><i class="bi bi-person-badge-fill"></i> <span>Tutors</span></a>
+            <a href="@Url.Action("SubjectDetails", "Subject")"><i class="bi bi-book-half"></i> <span>Subjects</span></a>
+            <a href="@Url.Action("BatchDetails", "Batch")"><i class="bi bi-calendar3"></i> <span>Batches</span></a>
+            <a href="@Url.Action("PaymentDetails", "Payment")"><i class="bi bi-credit-card-fill"></i> <span>Payments</span></a>
+            <a href="@Url.Action("EnrollmentDetails", "Enrollment")"><i class="bi bi-pencil-square"></i> <span>Enrollments</span></a>
+            <a href="@Url.Action("Index", "Admin")"><i class="bi bi-gear-fill"></i> <span>Admin</span></a>
+            <hr />
+            <a href="@Url.Action("Logout", "Account")">
+                <i class="bi bi-box-arrow-right nav-icon"></i> <span>Logout</span>
+            </a>
+        </div>
+
+
+        <!-- Toggle Button -->
+        <button id="sidebarToggle" class="sidebar-toggle">
+            <i class="bi bi-list"></i>
+        </button>
+    }
+
+    <!-- ✅ Main Content -->
+    <div id="mainContent" class="main-content">
+        @RenderBody()
+    </div>
+
+    <!-- ✅ Footer -->
+    <footer class="text-center py-3">
+        <p class="text-danger fw-bold mb-0">&copy; @DateTime.Now.Year - Tutor Management System</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sidebar Toggle Script -->
+    @*  <script>
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.getElementById("mainContent");
+            const toggleBtn = document.getElementById("sidebarToggle");
+
+            toggleBtn.addEventListener("click", function () {
+                sidebar.classList.toggle("collapsed");
+                mainContent.classList.toggle("collapsed");
+            });
+        </script> *@
+
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("mainContent");
+        const toggleBtn = document.getElementById("sidebarToggle");
+
+        // Only attach event if toggle button exists
+        if (toggleBtn && sidebar && mainContent) {
+            toggleBtn.addEventListener("click", function () {
+                sidebar.classList.toggle("collapsed");
+                mainContent.classList.toggle("collapsed");
+            });
+        }
+    </script>
+
+</body>
+</html>

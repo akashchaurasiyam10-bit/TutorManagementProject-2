@@ -1,0 +1,51 @@
+﻿@model TutorManagementProject.Models.Tutor
+@{
+    ViewBag.Title = "AddTutor";
+}
+
+<h2 style="text-align:center; border:double; color:red; background-color:yellowgreen">  Add All Tutor Records </h2>
+
+<br />
+
+@using (Html.BeginForm("AddTutor", "Tutor"))
+{
+    <div style="display:flex; gap:100px; background-color:aqua;color:brown; ">
+        <div style="flex:1; padding-left:20px; margin:20px">
+            @Html.LabelFor(T => T.FirstName)<br />
+            @Html.TextBoxFor(T => T.FirstName)
+            <br /><br />
+            @Html.LabelFor(T => T.LastName)<br />
+            @Html.TextBoxFor(T => T.LastName)
+            <br /><br />
+            @Html.LabelFor(T => T.Qualification)<br />
+            @Html.TextBoxFor(T => T.Qualification)
+            <br /><br />
+            @Html.LabelFor(T => T.ExpertSubject)<br />
+            @Html.TextBoxFor(T => T.ExpertSubject)
+        </div>
+        <br />
+        <div style="margin:20px; padding-right:100px;">
+            @Html.LabelFor(T => T.Exprience)<br />
+            @Html.TextBoxFor(T => T.Exprience)
+            <br /><br />
+            @Html.LabelFor(T => T.EmailId)<br />
+            @Html.TextBoxFor(T => T.EmailId)
+            <br /><br />
+            @Html.LabelFor(T => T.PhoneNo)<br />
+            @Html.TextBoxFor(T => T.PhoneNo)
+            <br /><br />
+            @Html.LabelFor(T => T.Status)<br />
+            @Html.TextBoxFor(T => T.Status)
+
+        </div>
+    </div>
+    <br />
+    <div style="text-align:center">
+        <input type="submit" value="Save" class="btn btn-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="btn btn-danger" />
+        <br />
+        <br />
+        @Html.ActionLink("Back to Tutor Details", "TutorDetails")
+    </div>
+
+}

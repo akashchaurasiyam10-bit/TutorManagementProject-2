@@ -1,0 +1,75 @@
+﻿@model TutorManagementProject.Models.Batch
+@{
+    ViewBag.Title = "AddBatch";
+}
+
+<h2 style="color:red; text-align:center;  background-color:yellow">Create Page  Add Batch Details And Update Batch Details </h2>
+
+<br />
+
+@using (Html.BeginForm("AddBatch", "Batch"))
+{
+    <div style="background-color:aqua;color:brown; font-weight:bold; display:flex">
+        <br />
+        <div style="flex:1; padding-left:80px;margin-bottom:50px">
+            <br />
+            @Html.LabelFor(B => B.BatchName)
+            <br />
+            @Html.TextBoxFor(B => B.BatchName)
+            <br />
+            <br />
+            @Html.LabelFor(B => B.BatchFee)<br />
+            @Html.TextBoxFor(B => B.BatchFee)
+            <br /><br />
+            @Html.LabelFor(B => B.Student.StudentName)
+            <br />
+            @Html.DropDownList("StudentId", null, "-- Select  --")
+            <br />
+            <br />
+            @Html.LabelFor(B => B.Tutor.TutorName)
+            <br />
+            @Html.DropDownList("TutorId", null, "-- Select --")
+            <br />
+        </div>
+        <div style="flex:1; margin-top:10px; padding-left:80px">
+            <br />
+            @Html.LabelFor(B => B.Timing)
+            <br />
+          
+            @Html.TextBoxFor(B => B.Timing, new { @type = "time", @class = "form-control" })
+
+            <br />
+            <br />
+            @Html.LabelFor(B => B.StartDate)
+            <br />
+            @Html.TextBoxFor(B => B.StartDate, new { @type = "date", style = "width:200px" })
+            <br />
+            <br />
+            @Html.LabelFor(B => B.EndDate)
+            <br />
+            @Html.TextBoxFor(B => B.EndDate, new { @type = "date", style = "width:200px" })
+            <br />
+            <br />
+            @Html.LabelFor(B => B.Mode)
+            <br />
+            @Html.TextBoxFor(B => B.Mode)
+            <br />
+            <br />
+            <h4>
+                @Html.LabelFor(B => B.Active)
+                @Html.CheckBoxFor(B => B.Active)
+            </h4>
+            <br />
+            <br />
+        </div>
+    </div>
+       <br />
+    <div style="padding-left:450PX">
+        <input type="submit" value="Save" class="btn btn-outline-success" name="btnSave" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" class="btn btn-outline-danger" />
+    </div>
+ }
+<br />
+        <h4 style="text-align:center">
+            @Html.ActionLink("Go to Batch Page Details", "BatchDetails")
+        </h4>

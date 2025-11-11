@@ -1,0 +1,68 @@
+﻿@model TutorManagementProject.Models.Batch
+@{
+    ViewBag.Title = "DeleteBatch";
+}
+
+<h2 style="text-align:center; background-color:yellow"> Batch Details Delete </h2>
+
+<br />
+@using (Html.BeginForm("DeleteBatch", "Batch"))
+ {
+    <table>
+        <tr>
+            <td>@Html.HiddenFor(B => B.BatchId, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Batch Name :</td>
+            <td>@Html.TextBoxFor(B => B.BatchName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Batch Fee :</td>
+            <td>@Html.TextBoxFor(B => B.BatchFee, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Student Id :</td>
+            <td>@Html.TextBoxFor(B => B.Student.StudentName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Tutor Id :</td>
+            <td>@Html.TextBoxFor(B => B.Tutor.TutorName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Timin :</td>
+            <td>@Html.TextBoxFor(B => B.Timing, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> StartDate :</td>
+            <td>@Html.TextBoxFor(B => B.StartDate, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> EndDate :</td>
+            <td>@Html.TextBoxFor(B => B.EndDate, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Mode :</td>
+            <td>@Html.TextBoxFor(B => B.Mode, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Active :</td>
+            <td>@Html.CheckBoxFor(B => B.Active)</td>
+        </tr>
+    </table>
+    <br />
+
+    <div style="text-align:center">
+        <p style="color:red;">Are you sure of Deleting the current record.??</p>
+        <br />
+        <input type="submit" value="Yes" class="btn btn-outline-danger" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label style="font-size:larger">@Html.ActionLink("NO", "BatchDetails")</label>
+    </div>
+ }
+
+
+
+
+
+
+
+

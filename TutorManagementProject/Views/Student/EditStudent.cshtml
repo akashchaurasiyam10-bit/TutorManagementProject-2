@@ -1,0 +1,53 @@
+﻿@model TutorManagementProject.Models.Student
+@{
+    ViewBag.Title = "EditStudent";
+}
+
+<h2 style="text-align:center; color:red; background-color:yellow;"> Edit Student Details  </h2>
+
+<br />
+@using (Html.BeginForm("UpdateStudent", "Student"))
+{
+    <div style="background-color:yellowgreen; color:brown; display:flex">
+      <div style="flex:1; padding-left:100px;margin:35px"> 
+          @Html.HiddenFor(S => S.StudentId)
+          <br />
+        @Html.LabelFor(S => S.FirstName) <br />
+        @Html.TextBoxFor(S => S.FirstName)
+         <br /><br />
+        @Html.LabelFor(S => S.LastName)<br />
+        @Html.TextBoxFor(S => S.LastName)
+          <br /><br />
+        @Html.LabelFor(S => S.EmailId)<br />
+        @Html.TextBoxFor(S => S.EmailId)
+          <br />
+      </div>
+      <div style="flex:1; gap:100px; padding-left:200px; margin:40px">
+        @Html.LabelFor(S => S.PhoneNo) <br />
+        @Html.TextBoxFor(S => S.PhoneNo)
+          <br /><br />
+        @Html.LabelFor(S => S.DOB)<br />
+        @Html.TextBoxFor(S => S.DOB, "{0:yyyy-MM-dd}", new { @type = "date", style = "width:200px" })
+
+        @*@Html.TextBoxFor(S => S.DOB, new { @type = "date", @class = "form-control", style = "width:200px" })*@
+           <br /><br />
+        @Html.LabelFor(S => S.RegistrationDate)<br />
+        @Html.TextBoxFor(S => S.RegistrationDate, "{0:yyyy-MM-dd}", new { @type = "date", style = "width:200px" })
+
+        @*@Html.TextBoxFor(S => S.RegistrationDate, new { @type = "date", @class = "form-control", style = "width:200px" })*@
+          <br /><br />
+        @Html.LabelFor(S => S.Active)<br />
+        @Html.CheckBoxFor(S => S.Active)
+      </div>
+     </div>
+    <br />
+    <div style="text-align:center;">
+        <input type="submit" value="Update" name="btnUpdate" class="btn btn-outline-success" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Cancel", "DisplayStudents")
+    </div>
+
+
+}
+
+
+@*@Html.ActionLink("Go to Students Details", "DisplayStudents");*@

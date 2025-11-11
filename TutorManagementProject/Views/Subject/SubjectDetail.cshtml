@@ -1,0 +1,31 @@
+﻿@model TutorManagementProject.Models.Subject
+@{
+    ViewBag.Title = "SubjectDetail";
+}
+
+<h2 style="color:brown; background-color:aqua; text-align:center; border:double">  Subject Detail  </h2>
+
+<br />
+<table border="1" style="border-color:blue; border-width:thin" class="table">
+    <tr>
+        <td style="color:red; font-size:16px">Subject Id :</td>
+        <td>@Model.SubjectId</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:larger"> Subject Name :</td>
+        <td>@Model.SubjectName</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> Description :</td>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <td style="color:red; font-size:16px"> Active :</td>
+        <td>@Model.Active</td>
+    </tr>
+    <tr>
+        <td align="center" colspan="4">
+            @Html.ActionLink("Back to Tutor Details", "SubjectDetails")
+        </td>
+    </tr>
+</table>

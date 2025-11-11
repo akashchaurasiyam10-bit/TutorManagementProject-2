@@ -1,0 +1,39 @@
+﻿@model TutorManagementProject.Models.Enrollment
+@{
+    ViewBag.Title = "DeleteEnrollment";
+}
+
+<h2 style="text-align:center; color:red; background-color:yellow">-- Delete Enrollment Records -- </h2>
+
+<br />
+@using (Html.BeginForm("DeleteEnrollment", "Enrollment"))
+{
+    <table border="1" style="border-color:blue; border-width:thin" class="table">
+        <tr>
+            <td>@Html.HiddenFor(B => B.EnrollmentId, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:larger"> Enrollment Date :</td>
+            <td>@Html.TextBoxFor(B => B.EnrollmentDate, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:larger"> Student Id - Name  :</td>
+            <td>@Html.TextAreaFor(B => B.Student.StudentName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:larger"> Batch Id - Name :</td>
+            <td>@Html.TextBoxFor(B => B.Batch.BatchName, new { @readonly = true})</td>
+        </tr>
+        <tr>
+            <td style="color:red; font-size:larger"> Active Status :</td>
+            <td>@Html.TextBoxFor(B => B.Status)</td>
+        </tr>
+    </table>
+    <br />
+    <div style="text-align:center">
+        <p style="color:red;">Are you sure of Deleting the current record.??</p>
+        <br />
+        <input type="submit" value="Yes" class="btn btn-outline-danger" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label style="font-size:larger">@Html.ActionLink("NO", "EnrollmentDetails")</label>
+    </div>
+}

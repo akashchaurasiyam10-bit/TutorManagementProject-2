@@ -1,0 +1,49 @@
+﻿@model TutorManagementProject.Models.Payment
+@{
+    ViewBag.Title = "EditPayment";
+}
+
+<h2 style="text-align:center; color:brown; background-color:yellowgreen"> Edit or Update Payment Details</h2>
+@using (Html.BeginForm("UpdatePayment", "Payment"))
+{
+    <div style="display:flex; gap:100px; background-color:aqua;color:brown; ">
+        <div style="flex:1; padding-left:20px; margin:20px">
+            @Html.HiddenFor(T => T.PaymentId)
+
+            @Html.LabelFor(T => T.Student.StudentName)<br />
+            @Html.DropDownList("StudentId")
+            <br /><br />
+            @Html.LabelFor(T => T.Batch.BatchName)<br />
+            @Html.DropDownList("BatchId")
+            <br /><br />
+            @Html.LabelFor(T => T.TotalAmaount)<br />
+            @Html.DropDownList("PaymentId")
+            <br /><br />
+            @Html.LabelFor(T => T.PaidFee)<br />
+            @Html.TextBoxFor(T => T.PaidFee)
+        </div>
+        <br />
+        <div style="margin:20px; padding-right:100px;">
+            @Html.LabelFor(T => T.DueFee)<br />
+            @Html.TextBoxFor(T => T.DueFee)
+            <br /><br />
+            @Html.LabelFor(T => T.PaymentMode)<br />
+            @Html.TextBoxFor(T => T.PaymentMode)
+            <br /><br />
+            @Html.LabelFor(T => T.TransactionId)<br />
+            @Html.TextBoxFor(T => T.TransactionId)
+            <br /><br />
+            @Html.LabelFor(T => T.Date)<br />
+            @Html.TextBoxFor(T => T.Date, "{0:yyyy-MM-dd}", new { @type = "date", style = "width:180px" })
+        </div>
+    </div>
+    <br />
+    <div style="text-align:center;">
+        <input type="submit" value="Update" name="btnUpdate" style="color:red; background-color:green" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Cancel", "PaymentDetails")
+    </div>
+
+}
+
+<br />
+<h4 style="text-align:center">@Html.ActionLink("GO to Main Payment Page", "PaymentDetails")</h4>

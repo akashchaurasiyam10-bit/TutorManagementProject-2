@@ -1,0 +1,35 @@
+﻿@model TutorManagementProject.Models.Subject
+@{
+    ViewBag.Title = "DeleteSubject";
+}
+
+<h2 style="color:orangered; background-color:antiquewhite; text-align:center">Delete Subject Record </h2>
+
+<br />
+@using (Html.BeginForm("DeleteSubject", "Subject"))
+{
+    <table>
+        <tr>
+            <td>@Html.HiddenFor(B => B.SubjectId, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Subject :</td>
+            <td>@Html.TextBoxFor(B => B.SubjectName, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Description :</td>
+            <td>@Html.TextAreaFor(B => B.Description, new { @readonly = true })</td>
+        </tr>
+        <tr>
+            <td> Active Status :</td>
+            <td>@Html.TextBoxFor(B => B.Active)</td>
+        </tr>
+    </table>
+    <br />
+    <div style="text-align:center">
+        <p style="color:red;">Are you sure of Deleting the current record.??</p>
+        <br />
+        <input type="submit" value="Yes" class="btn btn-outline-danger" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>@Html.ActionLink("NO", "SubjectDetails")</label>
+    </div>
+}

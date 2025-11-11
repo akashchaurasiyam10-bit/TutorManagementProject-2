@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TutorManagementProject.Models.Enrollment>
+@{
+    ViewBag.Title = "EnrollmentPayment";
+}
+
+<h2 style="border:solid; border-color:red; color:black; background-color:blue; text-align:center"> -- All Enrollment Details -- </h2>
+
+<br />
+<table border="1" style="border-color:red; border-width:thin" class="table">
+    <tr style="background-color:aqua; color:blue">
+        <th>@Html.DisplayNameFor(S => S.EnrollmentId)</th>
+        <th>@Html.DisplayNameFor(S => S.EnrollmentDate)</th>
+        <th>@Html.DisplayNameFor(S => S.StudentId)</th>
+        <th>@Html.DisplayNameFor(S => S.BatchId)</th>
+        <th>@Html.DisplayNameFor(S => S.Status)</th>
+        <th>-- Action --</th>
+    </tr>
+    @foreach (var std in Model)
+        
+     {  <tr style="background-color:antiquewhite">
+            <td>@Html.DisplayFor(S => std.EnrollmentId)</td>
+            <td>@Html.DisplayFor(S => std.EnrollmentDate)</td>
+            <td>@Html.DisplayFor(S => std.Student.StudentId)</td>
+            <td>@Html.DisplayFor(S => std.Batch.BatchId)</td>
+            <td>@Html.DisplayFor(S => std.Status) </td>
+
+            <td>
+                @Html.ActionLink("View", "EnrollmentDetail", new { EnrollmentId = std.EnrollmentId })
+                @Html.ActionLink("Edit", "EditEnrollment", new { EnrollmentId = std.EnrollmentId })
+                @Html.ActionLink("Delete", "DeleteEnrollment", new { EnrollmentId = std.EnrollmentId })
+            </td>
+        </tr>
+
+     }
+
+    <tr style="background-color:aliceblue">
+        <td align="center" colspan="9">@Html.ActionLink("Add New Enrollment Record", "AddEnrollment")</td>
+    </tr>
+
+</table>
+

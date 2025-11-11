@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TutorManagementProject.Models.Subject>
+@{
+    ViewBag.Title = "BatchDetails";
+}
+
+<h2 style="color:red; background-color:yellow; text-align:center; border:double"> All Subject Details  </h2>
+
+<br />
+<table border="1" style="border-color:red; border-width:thin" class="table">
+    <tr style="background-color:aqua; color:blue">
+
+        <th>@Html.DisplayNameFor(S => S.SubjectId)</th>
+        <th>@Html.DisplayNameFor(S => S.SubjectName)</th>
+        <th>@Html.DisplayNameFor(S => S.Description)</th>
+        <th>@Html.DisplayNameFor(S => S.Active)</th>
+        <th> -- Action --</th>
+    </tr>
+    @foreach (var sub in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(S => sub.SubjectId)</td>
+            <td>@Html.DisplayFor(S => sub.SubjectName)</td>
+            <td>@Html.DisplayFor(S => sub.Description)</td>
+            <td>@Html.DisplayFor(S => sub.Active)</td>
+
+            <td>
+                @Html.ActionLink("View", "SubjectDetail", new { SubjectId = sub.SubjectId })
+                @Html.ActionLink("Edit", "EditSubject",  new { SubjectId = sub.SubjectId })
+                @Html.ActionLink("Delete", "DeleteSubject", new { SubjectId = sub.SubjectId })
+            </td>
+        </tr>
+    }
+    <tr style="background-color:aliceblue">
+        <td align="center" colspan="9">@Html.ActionLink("Add New Subject Record", "AddSubject")</td>
+    </tr>
+</table>
+
+
+
+
