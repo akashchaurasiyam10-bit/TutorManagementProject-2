@@ -44,7 +44,6 @@ namespace MvcRoleBasedAuthentication_Demo.Models
         {
             throw new NotImplementedException();
         }
-
         public override string[] GetRolesForUser(string username)
         {
             using (TutorManagmentEntities1 _Context = new TutorManagmentEntities1())
@@ -59,7 +58,6 @@ namespace MvcRoleBasedAuthentication_Demo.Models
                 return userRoles;
             }
         }
-
         public override string[] GetUsersInRole(string roleName)
         {
             throw new NotImplementedException();
